@@ -1215,11 +1215,12 @@ if (document.querySelectorAll('.pdf-container').length) {
 }
 </script>
 
+<!--
 <script data-pjax>
 if (document.querySelectorAll('.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@7.0.5/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mermaid@8.9.0/dist/mermaid.min.js', () => {
     mermaid.init({
-      theme    : 'forest',
+      theme    : 'neutral',
       logLevel : 3,
       flowchart: { curve     : 'linear' },
       gantt    : { axisFormat: '%m/%d/%Y' },
@@ -1228,6 +1229,9 @@ if (document.querySelectorAll('.mermaid').length) {
   }, window.mermaid);
 }
 </script>
+-->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
 
 
   
