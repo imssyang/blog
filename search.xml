@@ -6,16 +6,52 @@
     <content><![CDATA[<p>Welcome to <a href="https://imssyang.com/">Just Do It</a>! This is a sample article. Let’s add some tags as above.</p>
 <span id="more"></span>
 
-<h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><h3 id="mermaid"><a href="#mermaid" class="headerlink" title="mermaid"></a>mermaid</h3><p>this is test.</p>
-<div class="mermaid">
+<h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><h3 id="mermaid"><a href="#mermaid" class="headerlink" title="mermaid"></a><a href="https://mermaid-js.github.io/mermaid/#/">mermaid</a></h3><div class="mermaid">
 graph TD
-A[Hard] --&gt;|Text| B(Round)
-B --&gt; C{Decision}
-C --&gt;|One| D[Result 1]
-C --&gt;|Two| E[Result 2]
+%%{init: {&#39;theme&#39;:&#39;base&#39;}}%%
+    A[Hard] --&gt;|Text| B(Round)
+    B --&gt; C{Decision}
+    C --&gt;|One| D[Result 1]
+    C --&gt;|Two| E[Result 2]
 </div>
 
-<p>this is test.</p>
+<div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffcccc', 'edgeLabelBackground':'#ffffee', 'tertiaryColor': '#fff0f0'}}}%%
+        graph TD
+          A[Christmas] -->|Get money| B(Go shopping)
+          B --> C{Let me think}
+          B --> G[/Another/]
+          C ==>|One| D[Laptop]
+          C -->|Two| E[iPhone]
+          C -->|Three| F[fa:fa-car Car]
+          subgraph section
+            C
+            D
+            E
+            F
+            G
+          end
+</div>
+
+<div class="mermaid">
+%%{init: {'securityLevel': 'loose', 'theme':'base'}}%%
+        sequenceDiagram
+          autonumber
+          par Action 1
+            Alice->>John: Hello John, how are you?
+          and Action 2
+            Alice->>Bob: Hello Bob, how are you?
+          end
+          Alice->>+John: Hello John, how are you?
+          Alice->>+John: John, can you hear me?
+          John-->>-Alice: Hi Alice, I can hear you!
+          Note right of John: John is perceptive
+          John-->>-Alice: I feel great!
+              loop Every minute
+                John-->Alice: Great!
+            end
+</div>
+
 <h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><a class="btn" href="#">Text</a>
 <a class="btn" href="#">Text</a><a class="btn" href="#" title="Title">Text & Title</a>
 
