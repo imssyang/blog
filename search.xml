@@ -67,6 +67,9 @@ graph TD
 
 
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
       <tags>
         <tag>program</tag>
         <tag>diary</tag>
@@ -875,7 +878,7 @@ You agree that the original English text shall prevail in the case of a dispute.
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>categories</title>
+    <title>Categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>

@@ -181,7 +181,7 @@ body {
 body {
   background: var(--body-bg-color);
   color: var(--text-color);
-  font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Serif SC, 'Noto Serif', 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 1.5;
   min-height: 100%;
@@ -194,7 +194,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Serif SC, 'Noto Serif', 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -491,7 +491,7 @@ pre {
 }
 pre,
 code {
-  font-family: Courier New, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+  font-family: Courier New, consolas, Menlo, monospace, 'Noto Serif', 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei';
 }
 code {
   border-radius: 3px;
@@ -1281,7 +1281,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Serif SC, 'Noto Serif', 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -2016,7 +2016,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Serif SC, 'Noto Serif', 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2210,7 +2210,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Noto Serif SC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Serif SC, 'Noto Serif', 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2983,11 +2983,11 @@ hr {
 }
 @media (min-width: 992px) {
   .sidebar-active {
-    margin-right: 300px;
+    margin-right: 320px;
   }
 }
 .sidebar {
-  right: -300px;
+  right: -320px;
 }
 .sidebar-active .sidebar {
   right: 0;
@@ -2999,7 +2999,7 @@ hr {
   position: fixed;
   top: 0;
   transition: all 0.2s ease-out;
-  width: 300px;
+  width: 320px;
   z-index: 1200;
 }
 .sidebar a {
@@ -3022,7 +3022,7 @@ hr {
   transition: all 0.2s ease-in-out;
 }
 .links-of-author a::before {
-  background: #6950e0;
+  background: #33391d;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -3049,5 +3049,45 @@ hr {
   display: inline-block;
 }
 .sidebar {
-  background: #222;
+  background: #fff;
+  box-shadow: inset 0 0 1px #000;
+}
+.sidebar-nav li {
+  color: #555;
+}
+.sidebar-nav li:hover {
+  color: #00004d;
+  text-decoration: none;
+}
+.sidebar a,
+.sidebar p,
+.sidebar span {
+  color: #555;
+}
+.post-toc {
+  text-align: left;
+}
+.footer {
+  text-align: center;
+}
+.footer-inner {
+  text-align: center;
+  display: inline-block;
+}
+.copyright {
+  display: inline-block;
+}
+.wordcount {
+  display: inline-block;
+}
+.wordcount:not(:first-child)::before {
+  content: '|';
+  margin: 0 0.5em;
+}
+.busuanzi-count {
+  display: inline-block;
+}
+.busuanzi-count:not(:first-child)::before {
+  content: '|';
+  margin: 0 0.5em;
 }
