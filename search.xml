@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>example</title>
+    <title>Sample Article by Hexo</title>
     <url>/2021/02/25/example/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://imssyang.com/">Just Do It</a>! This is a sample article. Let’s add some tags as above.</p>
+    <content><![CDATA[<p>Welcome to <a href="https://imssyang.com/">Just Do It</a>! This is a sample article.</p>
 <span id="more"></span>
 
 <h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><h3 id="mermaid"><a href="#mermaid" class="headerlink" title="mermaid"></a><a href="https://mermaid-js.github.io/mermaid/#/">mermaid</a></h3><div class="mermaid">
@@ -71,9 +71,8 @@ graph TD
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>program</tag>
-        <tag>diary</tag>
-        <tag>web</tag>
+        <tag>hexo</tag>
+        <tag>next</tag>
       </tags>
   </entry>
   <entry>
