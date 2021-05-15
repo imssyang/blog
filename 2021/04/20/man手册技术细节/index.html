@@ -25,21 +25,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"blog.imssyang.com","root":"/","images":"/images","scheme":"Mist","version":"8.2.1","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"width":300},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Disqus","order":-1},"gitalk":{"text":"Github","order":-2}},"activeClass":"disqus"},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":true,"preload":true}};
   </script>
-<meta name="description" content="404 – Page not found.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="https://blog.imssyang.com/404/index.html">
+<meta name="description" content="分析linux man手册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="man文档技术细节2.md">
+<meta property="og:url" content="https://blog.imssyang.com/2021/04/20/man%E6%89%8B%E5%86%8C%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/index.html">
 <meta property="og:site_name" content="Just Do It">
-<meta property="og:description" content="404 – Page not found.">
+<meta property="og:description" content="分析linux man手册">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-23T01:25:00.000Z">
-<meta property="article:modified_time" content="2021-02-24T11:08:06.140Z">
+<meta property="article:published_time" content="2021-04-20T13:38:02.000Z">
+<meta property="article:modified_time" content="2021-04-20T14:14:19.601Z">
 <meta property="article:author" content="Ssyang">
-<meta property="article:tag" content="Ssyang imssyang">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.imssyang.com/404/">
+<link rel="canonical" href="https://blog.imssyang.com/2021/04/20/man%E6%89%8B%E5%86%8C%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/">
 
 
 <script data-pjax class="page-configurations">
@@ -47,12 +47,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
-<title>404 | Just Do It
-</title>
+<title>man文档技术细节2.md | Just Do It</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3SP6NBCFPH"></script>
     <script data-pjax>
@@ -196,7 +195,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -209,6 +208,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text"> 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%84%E8%8C%83%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text"> 规范设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text"> 程序实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text"> 配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text"> 环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text"> 相关命令</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,45 +286,177 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
 
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.imssyang.com/2021/04/20/man%E6%89%8B%E5%86%8C%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/">
 
-    
-    
-    
-    <div class="post-block" lang="en"><header class="post-header">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/windmill.png">
+      <meta itemprop="name" content="Ssyang">
+      <meta itemprop="description" content="">
+    </span>
 
-<h1 class="post-title" itemprop="name headline">404
-</h1>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Just Do It">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          man文档技术细节2.md
+        </h1>
 
-<div class="post-meta-container">
-    <div class="post-description">404 – Page not found.</div>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-20 21:38:02 / Modified: 22:14:19" itemprop="dateCreated datePublished" datetime="2021-04-20T21:38:02+08:00">2021-04-20</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/04/20/man%E6%89%8B%E5%86%8C%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/04/20/man手册技术细节/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>734</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">██╗  ██╗ ██████╗ ██╗  ██╗    ███╗   ██╗ ██████╗ ████████╗</span><br><span class="line">██║  ██║██╔═████╗██║  ██║    ████╗  ██║██╔═══██╗╚══██╔══╝</span><br><span class="line">███████║██║██╔██║███████║    ██╔██╗ ██║██║   ██║   ██║</span><br><span class="line">╚════██║████╔╝██║╚════██║    ██║╚██╗██║██║   ██║   ██║</span><br><span class="line">     ██║╚██████╔╝     ██║    ██║ ╚████║╚██████╔╝   ██║</span><br><span class="line">     ╚═╝ ╚═════╝      ╚═╝    ╚═╝  ╚═══╝ ╚═════╝    ╚═╝</span><br><span class="line"></span><br><span class="line">    ███████╗ ██████╗ ██╗   ██╗███╗   ██╗██████╗</span><br><span class="line">    ██╔════╝██╔═══██╗██║   ██║████╗  ██║██╔══██╗</span><br><span class="line">    █████╗  ██║   ██║██║   ██║██╔██╗ ██║██║  ██║</span><br><span class="line">    ██╔══╝  ██║   ██║██║   ██║██║╚██╗██║██║  ██║</span><br><span class="line">    ██║     ╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝</span><br><span class="line">    ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝</span><br></pre></td></tr></table></figure>
-<!--
-<script src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"
-        charset="utf-8" homePageUrl="/" homePageName="Back to home">
-</script>
--->
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>分析linux man手册</p>
+<span id="more"></span>
+<h1 id="需求分析"><a class="markdownIt-Anchor" href="#需求分析"></a> 需求分析</h1>
+<p>程序help选项提供的是简要的描述，适合在充分理解的基础上作为一种快速提示的手段；<br />
+man手册作为linux平台的统一文档，用于开发者对需求、设计、部署过程进行充分描述；</p>
+<h1 id="规范设计"><a class="markdownIt-Anchor" href="#规范设计"></a> 规范设计</h1>
+<p>编写man文档要求：</p>
+<h1 id="程序实现"><a class="markdownIt-Anchor" href="#程序实现"></a> 程序实现</h1>
+<h1 id="配置文件"><a class="markdownIt-Anchor" href="#配置文件"></a> 配置文件</h1>
+<p>/etc/manpath.config<br />
+~/.manpath</p>
+<p>对于$PATH的每一项，都会搜索相对路径 …/man man …/share/man</p>
+<h1 id="环境变量"><a class="markdownIt-Anchor" href="#环境变量"></a> 环境变量</h1>
+<p>MANPATH 不建议使用</p>
+<ol>
+<li>使用后会屏蔽配置文件的设置；</li>
+<li>具有一定长度限制，大小取决于实现，当超过此长度后，会导致man命令报错： man: manpath list too long</li>
+</ol>
+<h1 id="相关命令"><a class="markdownIt-Anchor" href="#相关命令"></a> 相关命令</h1>
+<p>man -aw ls 列出检索到的man文档位置<br />
+manpath -d 查看manpath搜索路径过程<br />
+mandb      创建/var/cache/man/**/*下的index.db数据库，增强功能型并优化性能。<br />
+gdbmtool   交互式工具，查看GNU dbm文件数据库。<br />
+whatis — display one-line manual page descriptions</p>
+<p>manpath -g<br />
+/usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man:/usr/X11R6/man:/opt/man</p>
+<p>(GNU dbm)[<a target="_blank" rel="noopener" href="https://www.gnu.org.ua/software/gdbm/manual/Intro.html">https://www.gnu.org.ua/software/gdbm/manual/Intro.html</a>]<br />
+(mandb)[<a target="_blank" rel="noopener" href="https://www.systutorials.com/docs/linux/man/8-mandb/">https://www.systutorials.com/docs/linux/man/8-mandb/</a>]<br />
+(gdbmtool)[<a target="_blank" rel="noopener" href="https://www.systutorials.com/docs/linux/man/1-gdbmtool/">https://www.systutorials.com/docs/linux/man/1-gdbmtool/</a>]</p>
 
-      </div>
-      
-      
-      
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/25/example/" rel="prev" title="Sample Article by Hexo">
+                  <i class="fa fa-chevron-left"></i> Sample Article by Hexo
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="next" title="排序算法">
+                  排序算法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
 
 
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Github</a></li>
+            <li class="tab"><a href="#comment-disqus">Disqus</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+        </div>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -514,7 +646,7 @@ if (document.querySelectorAll('.mermaid').length) {
       quicklink.listen({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://blog.imssyang.com/404/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://blog.imssyang.com/2021/04/20/man%E6%89%8B%E5%86%8C%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/',]
       });
       });
   </script>
@@ -529,7 +661,47 @@ if (document.querySelectorAll('.mermaid').length) {
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
 </script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.imssyang.com/2021/04/20/man%E6%89%8B%E5%86%8C%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/";
+    this.page.identifier = "2021/04/20/man手册技术细节/";
+    this.page.title = "man文档技术细节2.md";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://imssyang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('.gitalk-container', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'ba40e2a2990186d78b0c',
+      clientSecret: 'c21ed29409a2675c70d1b68e7c7b6657a5e3d5c2',
+      repo        : 'blog',
+      owner       : 'imssyang',
+      admin       : ['imssyang'],
+      proxy       : 'https://cors-anywhere.imssyang.workers.dev/?https://github.com/login/oauth/access_token',
+      id          : '09d455573167e7fc9f733b5de158dd6b',
+        language: 'en',
+      distractionFreeMode: true
+    });
+    gitalk.render(document.querySelector('.gitalk-container'));
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>
